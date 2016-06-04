@@ -419,11 +419,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     _handleResponse: function(request) {
-      if (request === this.lastRequest) {
-        this._setLastResponse(request.response);
-        this._setLastError(null);
-        this._setLoading(false);
-      }
+      this._setLastResponse(request.response);
+      this._setLastError(null);
+      this._setLoading(false);
       this.fire('response', request, {bubbles: this.bubbles});
     },
 
