@@ -6,6 +6,7 @@ var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var bump = require('gulp-bump');
 var src = ['hateoas-ajax.html',
+           'iron-ajax-behavior.html',
            'test/*.js',
            'test/*.html'];
 
@@ -14,7 +15,8 @@ gulp.task('jshint', function () {
   return gulp.src(src)
     .pipe($.jshint.extract()) // Extract JS from .html files
     .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'));
+    .pipe($.jshint.reporter('jshint-stylish'))
+    .pipe($.jshint.reporter('fail'));
 });
 
 gulp.task('bump', function(){
