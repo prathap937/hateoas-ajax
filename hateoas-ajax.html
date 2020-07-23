@@ -53,6 +53,10 @@ Example:
       request.linkProperty = this.linkProperty;
       request.embeddedProperty = this.embeddedProperty;
       request.headers = this.headers;
+      // Addition of x-csrf-token header
+      if (app.csrfToken) {
+        request.headers['x-csrf-token'] = app.csrfToken;
+      }
       request.auto = false;
       return request;
     },
