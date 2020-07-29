@@ -1,6 +1,6 @@
 {
   "name": "hateoas-ajax",
-  "version": "1.0.0",
+  "version": "1.0.0-csrf",
   "description": "An extension of polymer's iron-ajax but with an addition of some magic related to hateoas.",
   "keywords": [
     "web-component",

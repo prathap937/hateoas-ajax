@@ -40,6 +40,22 @@ Example:
       embeddedProperty: {
         type: String,
         value: '_embedded'
+      },
+
+      /**
+       * 
+       * If false, the 'x-csrf-token' header 
+       * (stored within 'value' of a hidden input element with ID 'csrfToken')
+       * will be added to the headers.
+       * Example:
+       *  <input type="hidden" id="csrfToken" value="CSRF-token"/>
+       * 
+       * To disable this, set to true.
+       * 
+       */
+      disableCsrf: {
+        type: Boolean,
+        value: false
       }
     },
 
@@ -53,10 +69,15 @@ Example:
       request.linkProperty = this.linkProperty;
       request.embeddedProperty = this.embeddedProperty;
       request.headers = this.headers;
-      // Addition of x-csrf-token header
-      if (app.csrfToken) {
-        request.headers['x-csrf-token'] = app.csrfToken;
+
+      /**
+       * Addition of 'x-csrf-token' header in request headers
+       */
+      var tokenEl = document.querySelector('#csrfToken');
+      if (!this.disableCsrf && tokenEl && !!tokenEl.getAttribute('value')) {
+        request.headers['x-csrf-token'] = tokenEl.getAttribute('value');
       }
+      
       request.auto = false;
       return request;
     },
