@@ -222,7 +222,7 @@ Example:
       Object.defineProperty(object, 'id', {
         get: function() {
           if(!_id) {
-            _id = parseInt(/\d+$/.exec(attributes.href), 10);
+            _id = parseInt(/-?\d+$/.exec(attributes.href), 10);
           }
           return _id;
         },
